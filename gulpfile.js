@@ -6,7 +6,7 @@ const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 
-gulp.task('default', ['styles', 'image-min', 'scripts', 'html-copy'], () => {
+gulp.task('default', ['styles', 'image-min', 'scripts', 'html-copy', 'app-babel'], () => {
     gulp.watch('src/css/*.css', ['styles']);
     gulp.watch('src/js/*.js', ['scripts']);
     gulp.watch('index.html', ['htlm-copy']);
@@ -28,12 +28,17 @@ gulp.task('image-min', () => {
     .pipe(gulp.dest('dist/images'))
 });
 
-gulp.task('scripts', () => {
-    gulp.src(['src/js/resources.js', 'src/js/app.js', 'src/js/engine.js', ])
-    .pipe(concat('main.js'))
+gulp.task('app-babel', () => {
+    gulp.src(['src/js/app.js'])
     .pipe(babel({
         presets: ['@babel/env']
     }))
+    .pipe(gulp.dest('dist/js'))
+});
+
+gulp.task('scripts', () => {
+    gulp.src(['src/js/resources.js','src/js/engine.js', 'dist/js/app.js'])
+    .pipe(concat('main.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
 });
