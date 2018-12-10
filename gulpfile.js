@@ -1,9 +1,11 @@
 const gulp = require('gulp');
-const eslint = require('gulp-eslint');
- 
-task('default', () => {
-    return src(['scripts/*.js'])
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
+const autoprefixer = require('gulp-autoprefixer');
+
+gulp.task('default', () => {
+    gulp.src('src/css/*.css')
+    .pipe(autoprefixer({
+        browsers: ['last 2 versions'],
+        cascade: false
+    }))
+    .pipe(gulp.dest('dist/css'))
 });
