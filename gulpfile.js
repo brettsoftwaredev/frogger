@@ -37,7 +37,7 @@ gulp.task('app-babel', () => {
 });
 
 gulp.task('scripts', () => {
-    gulp.src(['src/js/resources.js','src/js/engine.js', 'dist/js/app.js'])
+    gulp.src(['src/js/resources.js', 'src/js/engine.js', 'dist/js/app.js'])
     .pipe(concat('main.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))

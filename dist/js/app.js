@@ -15,7 +15,7 @@ var Enemy = function Enemy(x, y) {
   this.x = x;
   this.y = y;
   this.speed = randomSpeed(50, 75);
-  this.sprite = 'images/enemy-bug.png';
+  this.sprite = 'dist/images/enemy-bug.png';
 };
 
 Enemy.prototype.update = function (dt) {
@@ -119,7 +119,7 @@ for (x = 1; x < 1000; x++) {
   extraEnemies.push(new Enemy(randomPos(-100, 500), 48));
 }
 
-var player = new Player(200, 380, "images/char-boy.png");
+var player = new Player(200, 380, "dist/images/char-boy.png");
 document.addEventListener('keyup', function (e) {
   var allowedKeys = {
     37: 'left',
