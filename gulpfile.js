@@ -6,8 +6,13 @@ const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 
-
 gulp.task('default', () => {
+    gulp.watch('src/css/*.css', ['styles']);
+    gulp.watch('src/js/*.js', ['scripts']);
+    gulp.watch('index.html', ['htlm-copy']);
+});
+
+gulp.task('styles', () => {
     gulp.src('src/css/*.css')
     .pipe(autoprefixer({
         browsers: ['last 2 versions'],
@@ -32,4 +37,9 @@ gulp.task('scripts', () => {
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
 });
+
+gulp.task('html-copy', () => {
+    gulp.src('index.html')
+    .pipe(gulp.dest('dist'))
+})
 
