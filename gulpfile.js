@@ -9,7 +9,7 @@ const uglify = require('gulp-uglify');
 gulp.task('default', ['styles', 'image-min', 'scripts', 'html-copy'], () => {
     gulp.watch('src/css/*.css', ['styles']);
     gulp.watch('src/js/*.js', ['scripts']);
-    gulp.watch('index.html', ['htlm-copy']);
+    gulp.watch('index.html', ['html-copy']);
 });
 
 gulp.task('styles', () => {
